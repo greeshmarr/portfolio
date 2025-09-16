@@ -1,5 +1,6 @@
 import { NavButton } from "./NavButton";
 import { motion } from "framer-motion";
+import icon2 from "../../../assets/icon-2.svg";
 import icon3 from "../../../assets/icon-3.svg";
 import icon4 from "../../../assets/icon-4.svg";
 import icon5 from "../../../assets/icon-5.svg";
@@ -14,6 +15,11 @@ export const NavigationGrid = ({
   const navItems = [
     {
       iconSrc: icon3,
+      text: "About",
+      action: () => onNavigate("about"),
+    },
+    {
+      iconSrc: icon2,
       text: "Experience",
       action: () => onNavigate("experience"),
     },
@@ -27,11 +33,11 @@ export const NavigationGrid = ({
       text: "Projects",
       action: () => onNavigate("projects"),
     },
-    {
-      iconSrc: icon6,
-      text: "Publications",
-      action: () => onNavigate("publications"),
-    },
+    // {
+    //   iconSrc: icon6,
+    //   text: "Publications",
+    //   action: () => onNavigate("publications"),
+    // },
     {
       iconSrc: icon7,
       text: "Contact",
@@ -44,7 +50,7 @@ export const NavigationGrid = ({
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
-      className="box-border caret-transparent gap-x-3 grid grid-cols-[repeat(1,minmax(0px,1fr))] max-w-2xl outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] gap-y-3 w-full mt-4 md:grid-cols-[repeat(5,minmax(0px,1fr))]"
+      className="box-border caret-transparent flex flex-wrap justify-center md:flex-nowrap gap-4 max-w-2xl outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] w-full mt-4"
     >
       {navItems.map((item, index) => (
         <motion.div

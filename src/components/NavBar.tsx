@@ -9,23 +9,37 @@ export const NavBar = ({
   currentSection?: string;
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const navItems = [
     { label: "Home", section: "hero" },
+    { label: "About", section: "about" },
     { label: "Experience", section: "experience" },
     { label: "Skills", section: "skills" },
     { label: "Projects", section: "projects" },
-    { label: "Publications", section: "publications" },
+    // { label: "Publications", section: "publications" },
     { label: "Contact", section: "contact" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 20);
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down past a certain threshold
+        setIsScrollingUp(false);
+      } else {
+        // Scrolling up
+        setIsScrollingUp(true);
+      }
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const handleNavClick = useCallback(
     (section: string) => {
@@ -36,13 +50,11 @@ export const NavBar = ({
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 mb-12 transition-all duration-500 ${
-        isScrolled
-          ? "backdrop-blur-xl bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.95)] shadow-lg"
-          : "backdrop-blur-md bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.85)]"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform ${
+        isScrollingUp ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <div className={`max-w-7xl mx-auto flex items-center justify-between px-6 py-4 transition-all duration-500 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
         <button
           onClick={() => handleNavClick("hero")}
           className="transition-all duration-300 hover:scale-110 hover:rotate-3 focus:outline-none focus:ring-2 focus:ring-[oklab(0.278187_0.0396484_0.114655)] focus:ring-opacity-50 rounded-full"
@@ -53,7 +65,7 @@ export const NavBar = ({
             className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-md"
           />
         </button>
-        <div className="flex items-center gap-3 md:gap-5 px-4 py-2 rounded-2xl bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.7)] backdrop-blur-md">
+        <div className={`flex items-center gap-3 md:gap-5 px-4 py-2 rounded-2xl`}>
           {navItems.slice(1).map((item) => (
             <button
               key={item.section}
@@ -62,7 +74,7 @@ export const NavBar = ({
                 ${
                   currentSection === item.section
                     ? "text-white bg-black shadow-lg shadow-black/20 scale-105"
-                    : "text-black hover:text-black hover:bg-black/10 hover:scale-102"
+                    : "text-black hover:bg-black/10 hover:scale-102"
                 }
                 focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50
               `}

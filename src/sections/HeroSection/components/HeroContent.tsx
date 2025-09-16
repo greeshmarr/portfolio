@@ -23,7 +23,7 @@ export const HeroContent = () => {
         transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
         className="text-4xl font-bold box-border caret-transparent leading-10 outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] md:text-7xl md:leading-[72px]"
       >
-        Hey, I&#39;m Greeshma
+        Hey, I'm Greeshma
       </motion.h2>
 
       <motion.h1
@@ -34,6 +34,15 @@ export const HeroContent = () => {
       >
         Senior Software Engineer
       </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+        className="text-md text-[oklch(0.4_0.006_285.885)] mt-2 max-w-lg md:text-lg"
+      >
+        I craft scalable, user-first experiences that bring designs to life and backends to scale.
+      </motion.p>
     </motion.div>
   );
 };

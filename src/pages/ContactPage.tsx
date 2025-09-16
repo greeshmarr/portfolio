@@ -36,11 +36,6 @@ export const ContactPage = ({
       link: "mailto:greeshmarr23@gmail.com",
     },
     {
-      label: "Phone",
-      value: "+91 7892056793",
-      link: "tel:+917892056793",
-    },
-    {
       label: "LinkedIn",
       value: "linkedin.com/in/greeshma-r-r-05290a190/",
       link: "https://www.linkedin.com/in/greeshma-r-r-05290a190/",
@@ -108,9 +103,7 @@ export const ContactPage = ({
                   Let's Connect!
                 </h3>
                 <p className="text-[oklch(0.269_0_0)]">
-                  I'm always interested in discussing new opportunities,
-                  innovative projects, and collaborations. Feel free to reach
-                  out through any of the channels above or use the contact form.
+                  I’m open to full-time opportunities and would be glad to discuss how my experience can help your team. Reach out anytime using the form or the links above.
                 </p>
               </div>
             </motion.div>

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { HeroSection } from "../HeroSection";
+import { AboutPage } from "../../pages/AboutPage";
 import { ExperiencePage } from "../../pages/ExperiencePage";
 import { SkillsPage } from "../../pages/SkillsPage";
-import { ProjectsPage } from "../../pages/ProjectsPage";
-import { PublicationsPage } from "../../pages/PublicationsPage";
+// import { ProjectsPage } from "../../pages/ProjectsPage";
+import { ProjectAndPublicationsPage } from "../../pages/PublicationsPage";
 import { ContactPage } from "../../pages/ContactPage";
 import { ColorPaintingCanvas } from "../../components/ColorPaintingCanvas";
 
@@ -17,14 +18,16 @@ export const Main = () => {
 
   const renderPage = () => {
     switch (currentPage) {
+      case "about":
+        return <AboutPage onNavigate={handleNavigate} />;
       case "experience":
         return <ExperiencePage onNavigate={handleNavigate} />;
       case "skills":
         return <SkillsPage onNavigate={handleNavigate} />;
+      // case "projects":
+      //   return <ProjectsPage onNavigate={handleNavigate} />;
       case "projects":
-        return <ProjectsPage onNavigate={handleNavigate} />;
-      case "publications":
-        return <PublicationsPage onNavigate={handleNavigate} />;
+        return <ProjectAndPublicationsPage onNavigate={handleNavigate} />;
       case "contact":
         return <ContactPage onNavigate={handleNavigate} />;
       default:

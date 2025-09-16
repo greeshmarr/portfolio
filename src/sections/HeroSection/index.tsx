@@ -1,3 +1,5 @@
+// HeroSection.tsx
+import { motion } from "framer-motion";
 import { BackgroundText } from "./components/BackgroundText";
 import { CTAButton } from "./components/CTAButton";
 import { HeroContent } from "./components/HeroContent";
@@ -11,7 +13,13 @@ export const HeroSection = ({
   onNavigate: (section: string) => void;
 }) => {
   return (
-    <div className="relative items-center box-border caret-transparent flex flex-col justify-center min-h-[1000px] outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] overflow-hidden pb-10 px-4 md:pb-16">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.3 } }} // This is the new part
+      transition={{ duration: 0.5 }}
+      className="relative items-center box-border caret-transparent flex flex-col justify-center min-h-[1000px] outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] overflow-hidden pb-10 px-4 md:pb-16"
+    >
       <BackgroundText />
       <HeroContent />
       <div className="relative box-border caret-transparent h-64 outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] w-64 z-10 overflow-hidden md:h-78 md:w-78">
@@ -31,6 +39,6 @@ export const HeroSection = ({
           className="aspect-[auto_1280_/_1000] box-border caret-transparent h-[1000px] max-w-full outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] w-screen"
         />
       </div>
-    </div>
+    </motion.div>
   );
 };

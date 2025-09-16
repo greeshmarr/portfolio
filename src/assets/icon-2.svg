@@ -1,0 +1,16 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="48"
+  height="48"
+  viewBox="0 0 24 24"
+  fill="#8B4513"
+>
+  <!-- Briefcase body -->
+  <rect x="3" y="8" width="18" height="12" rx="2" ry="2"></rect>
+
+  <!-- Handle -->
+  <path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2h-6z"></path>
+
+  <!-- Divider line -->
+  <rect x="3" y="13" width="18" height="1"></rect>
+</svg>

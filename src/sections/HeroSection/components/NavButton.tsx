@@ -12,24 +12,39 @@ export const NavButton = (props: NavButtonProps) => {
       onClick={props.onClick}
       whileHover={{ 
         scale: 1.05,
-        y: -2,
-        transition: { duration: 0.2, ease: "easeOut" }
+        y: -3,
+        transition: { duration: 0.3, ease: "easeOut" }
       }}
       whileTap={{ 
-        scale: 0.98,
+        scale: 0.95,
         transition: { duration: 0.1 }
       }}
-      className="text-sm font-medium items-center aspect-square backdrop-blur-lg bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.3)] shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px] caret-transparent gap-x-2 flex shrink-0 h-9 justify-center leading-5 outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] gap-y-2 text-center text-nowrap w-full border px-4 py-8 rounded-2xl border-solid border-[oklch(0.92_0.004_286.32)] md:p-10 hover:bg-[oklab(0.999994_0.0000455678_0.0000200868_/_0.5)] hover:shadow-lg transition-all duration-300"
+      className="
+        relative 
+        flex flex-col items-center justify-center 
+        w-28 h-28 
+        p-4 
+        rounded-2xl 
+        text-gray-800 font-semibold 
+        bg-gradient-to-br from-white to-gray-50 
+        shadow-lg 
+        transition-all duration-300 ease-in-out
+        overflow-hidden
+        group
+      "
     >
-      <div className="text-[oklch(0.373_0.034_259.733)] items-center box-border caret-transparent gap-x-1 flex flex-col h-full justify-center outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] gap-y-1 text-nowrap">
+      {/* Background overlay for hover effect */}
+      <span className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+
+      <div className="relative z-10 flex flex-col items-center justify-center gap-2">
         <motion.img
           src={props.iconSrc}
           alt="Icon"
-          className="box-border caret-transparent shrink-0 h-4 outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] text-nowrap w-4"
-          whileHover={{ rotate: 5 }}
+          className="w-12 h-12 shrink-0 text-blue-600 transition-transform duration-300 group-hover:rotate-6"
+          whileHover={{ rotate: 6 }}
           transition={{ duration: 0.2 }}
         />
-        <span className="text-xs box-border caret-transparent block leading-4 outline-[oklab(0.705_0.00415142_-0.0144141_/_0.5)] text-nowrap md:text-sm md:leading-5">
+        <span className="text-sm md:text-md text-center transition-colors duration-300 group-hover:text-gray-900">
           {props.text}
         </span>
       </div>
